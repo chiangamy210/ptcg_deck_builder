@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import DeckTable from "./components/DeckTable";
+import SearchResults from "./components/SearchResults";
+import cardsData from "./data/cards";
+import "./App.css";
 
 function App() {
+  const [deck, setDeck] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (searchTerm) => {
+    const results = cardsData.filter((card) =>
+      card.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
+  const handleAddToDeck = (card) => {
+    setDeck([...deck, card]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app-container">
+      <header className="app-header">
+        <h1>PTCG Deck Builder</h1>
       </header>
+      <main className="app-main">
+        <SearchBar onSearch={handleSearch} />
+        <div className="content-area">
+          <SearchResults
+            results={searchResults}
+            onAddToDeck={handleAddToDeck}
+          />
+          <DeckTable deck={deck} />
+        </div>
+      </main>
+      <footer className="app-footer">
+        <p>&copy; 2025 PTCG Deck Builder</p>
+      </footer>
     </div>
   );
 }
