@@ -1,12 +1,24 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    onSearch(searchTerm);
+    try {
+      const encodedSearchTerm = encodeURIComponent(searchTerm);
+      const response = await axios.get(
+        `https://api.pokemontcg.io/v2/cards?q=name:${encodedSearchTerm}`
+      );
+      console.log("API Response Data:", response.data.data);
+      onSearch(searchTerm); // Pass searchTerm to onSearch
+    } catch (error) {
+      console.error("Error fetching cards:", error);
+      alert("Failed to fetch cards. Please check the console for details.");
+      onSearch(""); // Send empty string in case of error
+    }
   };
 
   return (

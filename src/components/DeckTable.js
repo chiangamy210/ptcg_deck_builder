@@ -2,7 +2,7 @@ import React from "react";
 import CardItem from "./CardItem";
 import "./DeckTable.css";
 
-const DeckTable = ({ deck }) => {
+const DeckTable = ({ deck, onCardHover, onCardLeave, onCardClick }) => {
   // Group cards by type
   const groupedCards = deck.reduce((acc, card) => {
     if (!acc[card.type]) {
@@ -48,7 +48,14 @@ const DeckTable = ({ deck }) => {
               </div>
               <div className="section-cards">
                 {cards.map(({ card, quantity }) => (
-                  <CardItem key={card.id} card={card} quantity={quantity} />
+                  <CardItem
+                    key={card.id}
+                    card={card}
+                    quantity={quantity}
+                    onCardHover={onCardHover}
+                    onCardLeave={onCardLeave}
+                    onCardClick={onCardClick}
+                  />
                 ))}
               </div>
             </div>

@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-bottom: 20px;
   width: 100%;
   max-width: 600px;
+  padding: 25px;
 }
 
 .search-form {

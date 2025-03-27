@@ -27,21 +27,57 @@ body {
 
 .app-main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Change to row for side-by-side columns */
+  align-items: center; /* Align columns to the start */
   padding: 20px;
-  flex: 1; /* Fill remaining space */
-}
-
-.content-area {
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  gap: 20px;
-}
-
-.content-area > * {
   flex: 1;
+  width: 100%; /* Ensure main takes full width */
+  max-width: 1200px; /* Optional: set a max width for the main content */
+  margin: 0 auto; /* Center the main content */
+}
+
+.app-columns {
+  display: flex;
+  flex-direction: row;
+  width: 90%; /* Reduce overall width to allow for margins */
+  max-width: 1200px;
+  /* padding: 20px; */
+  gap: 30px; /* Increase gap between columns */
+}
+
+.column {
+  flex: 1;
+  padding: 25px;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow-y: auto; /* In case content overflows */
+  height: auto; /* Adjust height as needed */
+}
+
+.column-search-results {
+  max-height: 600px;
+}
+
+.column-card-page {
+  max-height: 600px;
+}
+
+.column-deck-table {
+  max-height: 600px; /* Example max height for deck table */
+}
+
+.app-header {
+  margin-bottom: 30px; /* More space below header */
+}
+
+.app-header h1 {
+  font-size: 2.5rem; /* Slightly larger header font */
+}
+
+.app-footer {
+  margin-top: 30px; /* More space above footer */
+  padding: 15px 0; /* Adjust footer padding */
 }
 
 .app-footer {
@@ -50,4 +86,20 @@ body {
   text-align: center;
   padding: 10px 0;
   margin-top: 20px;
+}
+.hover-card {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.hover-card-image {
+  width: 120px;
+  height: auto;
+  display: block;
 }

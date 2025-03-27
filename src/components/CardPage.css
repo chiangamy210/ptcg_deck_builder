@@ -1,0 +1,52 @@
+.card-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 1000;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 90vh;
+  overflow-y: auto;
+  margin-top: 0;
+  background-color: rgba(255, 255, 255, 1);
+  opacity: 1;
+  width: 600px; /* Fixed width for the card page */
+  flex-direction: row; /* Arrange image and details in a row */
+  align-items: flex-start; /* Align items to the top in the row */
+}
+
+.card-page .card-content {
+  display: flex;
+  flex-direction: row; /* Image and details in a row */
+  align-items: flex-start; /* Align items to the top */
+  width: 100%; /* Take full width within card-page */
+}
+
+.card-page .card-image {
+  max-width: 200px; /* Smaller image width */
+  margin-right: 20px; /* Space between image and details */
+  margin-bottom: 0; /* Remove bottom margin
+}
+
+.card-page .card-details {
+  text-align: left;
+  flex: 1; /* Take remaining space */
+}
+
+.card-page h2 {
+  text-align: left; /* Align heading to the left */
+}
+
+.card-details p {
+  margin-bottom: 5px;
+}
+
+.card-add-to-deck-button {
+  margin-top: 20px; /* Add margin above the button */
+  align-self: center; /* Center button below details */
+}
