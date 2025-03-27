@@ -100,8 +100,18 @@ function App() {
               clearSelectedCard={clearSelectedCard}
             />
           </div>
-          <div className="column column-search-results">
-            {searchResults.length > 0 && (
+          {selectedCard ? (
+            <div className="column column-card-page">
+              <CardPage
+                card={selectedCard}
+                onAddToDeck={handleAddToDeck}
+                onClose={clearSelectedCard}
+              />
+            </div>
+          ) : null}
+
+          {searchResults.length > 0 ? (
+            <div className="column column-search-results">
               <SearchResults
                 results={searchResults}
                 onAddToDeck={handleAddToDeck}
@@ -109,17 +119,8 @@ function App() {
                 clearSelectedCard={clearSelectedCard}
                 onCardHover={handleCardHover}
               />
-            )}
-          </div>
-          <div className="column column-card-page">
-            {selectedCard ? (
-              <CardPage
-                card={selectedCard}
-                onAddToDeck={handleAddToDeck}
-                onClose={clearSelectedCard}
-              />
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
       </main>
       <footer className="app-footer">
