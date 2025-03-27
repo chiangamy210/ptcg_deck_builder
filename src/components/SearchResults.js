@@ -11,9 +11,9 @@ const SearchResults = ({
   clearSelectedCard,
 }) => {
   // Clears selected card when a new search occurs
-  useEffect(() => {
-    clearSelectedCard();
-  }, [results, clearSelectedCard]);
+  // useEffect(() => { // REMOVING this useEffect
+  //   clearSelectedCard();
+  // }, [results, clearSelectedCard]);
 
   if (!results || results.length === 0) {
     return null;

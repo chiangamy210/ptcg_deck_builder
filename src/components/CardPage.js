@@ -5,14 +5,20 @@ const CardPage = ({ card, onAddToDeck, onClose }) => {
   const cardPageRef = useRef(null);
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    // Re-enabling the useEffect hook with delay
+    const handleClickOutside = (event) => {
       if (cardPageRef.current && !cardPageRef.current.contains(event.target)) {
         onClose();
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    const timer = setTimeout(() => {
+      // Delay adding listener
+      document.addEventListener("mousedown", handleClickOutside);
+    }, 100); // 100ms delay
+
     return () => {
+      clearTimeout(timer); // Clear timeout on unmount
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);

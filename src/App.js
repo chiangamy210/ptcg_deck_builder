@@ -56,9 +56,11 @@ function App() {
 
   const handleCardHover = (card, event) => {
     clearTimeout(hoverTimer);
+    console.log("handleCardHover called", card); // ADDED console.log
     hoverTimer = setTimeout(() => {
       const rect = event.target.getBoundingClientRect();
       setHoveredCard(card);
+      console.log("hoveredCard state updated", card); // ADDED console.log
       setHoverPosition({
         top: rect.top + window.scrollY + 10,
         left: rect.right + window.scrollX + 10,
@@ -73,8 +75,10 @@ function App() {
   };
 
   const handleCardClick = (card) => {
+    console.log("handleCardClick called", card); // ADDED console.log
     setSelectedCard(card);
-    setHoveredCard(null);
+    console.log("selectedCard state updated", card); // ADDED console.log
+    // setHoveredCard(null);
   };
 
   const clearSelectedCard = () => {

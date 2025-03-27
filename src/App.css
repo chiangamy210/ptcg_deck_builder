@@ -61,6 +61,7 @@ body {
 
 .column-card-page {
   max-height: 600px;
+  background-color: lightcoral; /* ADDED background-color for debugging */
 }
 
 .column-deck-table {

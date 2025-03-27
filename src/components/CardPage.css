@@ -5,11 +5,8 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  position: fixed;
   z-index: 1000;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   max-height: 90vh;
   overflow-y: auto;
   margin-top: 0;
