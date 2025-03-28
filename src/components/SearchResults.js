@@ -33,7 +33,6 @@ const SearchResults = ({
             onCardHover={onCardHover}
             onCardLeave={onCardLeave}
             onCardClick={onCardClick}
-            clearSelectedCard={clearSelectedCard} // Pass clearSelectedCard
           />
         ))}
       </div>

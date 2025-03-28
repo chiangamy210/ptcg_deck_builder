@@ -56,14 +56,12 @@ function App() {
 
   const handleCardHover = (card, event) => {
     clearTimeout(hoverTimer);
-    console.log("handleCardHover called", card); // ADDED console.log
     hoverTimer = setTimeout(() => {
       const rect = event.target.getBoundingClientRect();
       setHoveredCard(card);
-      console.log("hoveredCard state updated", card); // ADDED console.log
       setHoverPosition({
-        top: rect.top + window.scrollY + 10,
-        left: rect.right + window.scrollX + 10,
+        top: rect.top + window.scrollY - window.innerHeight * 0.2, // Keep the top position relative to the card item
+        left: rect.right + window.scrollX + 10, // Position to the right of the card item
       });
     }, 150);
   };
@@ -75,9 +73,7 @@ function App() {
   };
 
   const handleCardClick = (card) => {
-    console.log("handleCardClick called", card); // ADDED console.log
     setSelectedCard(card);
-    console.log("selectedCard state updated", card); // ADDED console.log
     // setHoveredCard(null);
   };
 
@@ -100,6 +96,23 @@ function App() {
               clearSelectedCard={clearSelectedCard}
             />
           </div>
+          {hoveredCard ? (
+            <div
+              className="card-page-hover"
+              style={{
+                position: "absolute",
+                top: hoverPosition.top,
+                left: hoverPosition.left,
+                zIndex: 10,
+              }}
+            >
+              <CardPage
+                card={hoveredCard}
+                onClose={() => setHoveredCard(null)}
+              />
+            </div>
+          ) : null}
+
           {selectedCard ? (
             <div className="column column-card-page">
               <CardPage
