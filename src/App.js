@@ -61,7 +61,7 @@ function App() {
       setHoveredCard(card);
       setHoverPosition({
         top: rect.top + window.scrollY - window.innerHeight * 0.2, // Keep the top position relative to the card item
-        left: rect.right + window.scrollX + 10, // Position to the right of the card item
+        left: rect.right + window.scrollX, // Position to the right of the card item
       });
     }, 150);
   };
@@ -94,16 +94,15 @@ function App() {
               deck={deck}
               onCardClick={handleCardClick}
               clearSelectedCard={clearSelectedCard}
+              // onCardHover={handleCardHover}
             />
           </div>
           {hoveredCard ? (
             <div
               className="card-page-hover"
               style={{
-                position: "absolute",
                 top: hoverPosition.top,
                 left: hoverPosition.left,
-                zIndex: 10,
               }}
             >
               <CardPage

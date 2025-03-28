@@ -2,7 +2,7 @@ import React from "react";
 import CardItem from "./CardItem";
 import "./DeckTable.css";
 
-const DeckTable = ({ deck, onCardHover, onCardLeave, onCardClick }) => {
+const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
   // Group cards by type
   const groupedCards = deck.reduce((acc, card) => {
     if (!acc[card.type]) {
@@ -52,7 +52,7 @@ const DeckTable = ({ deck, onCardHover, onCardLeave, onCardClick }) => {
                     key={card.id}
                     card={card}
                     quantity={quantity}
-                    onCardHover={onCardHover}
+                    // onCardHover={onCardHover}
                     onCardLeave={onCardLeave}
                     onCardClick={onCardClick}
                   />

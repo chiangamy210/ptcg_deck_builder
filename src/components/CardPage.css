@@ -23,12 +23,7 @@
 .card-page .card-image {
   max-width: 200px; /* Smaller image width */
   margin-right: 20px; /* Space between image and details */
-  margin-bottom: 0; /* Remove bottom margin
-}
-
-.card-page .card-details {
-  text-align: left;
-  flex: 1; /* Take remaining space */
+  margin-bottom: 0;
 }
 
 .card-page h2 {

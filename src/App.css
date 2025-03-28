@@ -85,7 +85,7 @@ body {
   padding: 10px 0;
   margin-top: 20px;
 }
-.hover-card {
+.card-page-hover {
   position: absolute;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.9);
@@ -96,16 +96,16 @@ body {
   pointer-events: none;
 }
 
+/* .decktable-item-hover-card{
+
+}
+
+.searchresult-item-hover-card{
+  
+} */
+
 .hover-card-image {
   width: 120px;
   height: auto;
   display: block;
-}
-
-.card-page-hover {
-  z-index: 10;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }

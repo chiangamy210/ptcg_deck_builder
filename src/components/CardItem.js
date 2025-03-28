@@ -13,7 +13,11 @@ const CardItem = ({
     <div
       className="card-item"
       onClick={() => onCardClick(card)}
-      onMouseEnter={(e) => onCardHover(card, e)}
+      onMouseEnter={(e) => {
+        if (onCardHover) {
+          onCardHover(card, e);
+        }
+      }}
       onMouseLeave={onCardLeave}
     >
       <div className="card-quantity">{quantity}</div>
