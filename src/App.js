@@ -59,6 +59,7 @@ function App() {
     hoverTimer = setTimeout(() => {
       const rect = event.target.getBoundingClientRect();
       setHoveredCard(card);
+      setIsHovered(true);
       setHoverPosition({
         top: rect.top + window.scrollY - window.innerHeight * 0.2, // Keep the top position relative to the card item
         left: rect.right + window.scrollX, // Position to the right of the card item
@@ -99,6 +100,7 @@ function App() {
             >
               <CardPage
                 card={hoveredCard}
+                isHovered={isHovered}
                 onClose={() => setHoveredCard(null)}
               />
             </div>

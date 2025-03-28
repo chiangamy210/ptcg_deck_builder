@@ -1,24 +1,26 @@
 import React, { useEffect, useRef } from "react";
 import "./CardPage.css";
 
-const CardPage = ({ card, onAddToDeck, onClose }) => {
+const CardPage = ({ card, onAddToDeck, onClose, isHovered }) => {
   const cardPageRef = useRef(null);
 
   useEffect(() => {
-    // Re-enabling the useEffect hook with delay
     const handleClickOutside = (event) => {
-      if (cardPageRef.current && !cardPageRef.current.contains(event.target)) {
+      if (
+        isHovered &&
+        cardPageRef.current &&
+        !cardPageRef.current.contains(event.target)
+      ) {
         onClose();
       }
     };
 
     const timer = setTimeout(() => {
-      // Delay adding listener
       document.addEventListener("mousedown", handleClickOutside);
-    }, 100); // 100ms delay
+    }, 100);
 
     return () => {
-      clearTimeout(timer); // Clear timeout on unmount
+      clearTimeout(timer);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
