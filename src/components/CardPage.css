@@ -38,3 +38,19 @@
   margin-top: 20px; /* Add margin above the button */
   align-self: center; /* Center button below details */
 }
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #333;
+  z-index: 1001; /* Ensure it's above card content */
+}
+
+.close-button:hover {
+  color: black;
+}

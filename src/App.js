@@ -66,15 +66,8 @@ function App() {
     }, 150);
   };
 
-  const handleCardLeave = () => {
-    clearTimeout(hoverTimer);
-    setHoveredCard(null);
-    setIsHovered(false);
-  };
-
   const handleCardClick = (card) => {
     setSelectedCard(card);
-    // setHoveredCard(null);
   };
 
   const clearSelectedCard = () => {
@@ -94,7 +87,6 @@ function App() {
               deck={deck}
               onCardClick={handleCardClick}
               clearSelectedCard={clearSelectedCard}
-              // onCardHover={handleCardHover}
             />
           </div>
           {hoveredCard ? (

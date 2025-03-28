@@ -29,6 +29,9 @@ const CardPage = ({ card, onAddToDeck, onClose }) => {
 
   return (
     <div className="card-page" ref={cardPageRef}>
+      <button className="close-button" onClick={onClose}>
+        X
+      </button>
       <h2>{card.name}</h2>
       <div className="card-content">
         {card.images && card.images.large && (
