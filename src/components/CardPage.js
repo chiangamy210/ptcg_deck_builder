@@ -31,9 +31,12 @@ const CardPage = ({ card, onAddToDeck, onClose, isHovered }) => {
 
   return (
     <div className="card-page" ref={cardPageRef}>
-      <button className="close-button" onClick={onClose}>
-        X
-      </button>
+      {!isHovered ? (
+        <button className="close-button" onClick={onClose}>
+          X
+        </button>
+      ) : null}
+
       <h2>{card.name}</h2>
       <div className="card-content">
         {card.images && card.images.large && (
