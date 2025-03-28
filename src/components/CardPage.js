@@ -50,12 +50,52 @@ const CardPage = ({ card, onAddToDeck, onClose, isHovered }) => {
             <strong>Subtypes:</strong>{" "}
             {card.subtypes && card.subtypes.join(", ")}
           </p>
-          <p>
-            <strong>HP:</strong> {card.hp}
-          </p>
+          {card.hp && (
+            <p>
+              <strong>HP:</strong> {card.hp}
+            </p>
+          )}
+          {card.rule && (
+            <p>
+              <strong>Rule:</strong> {card.rule}
+            </p>
+          )}
+          {card.abilities && card.abilities.length > 0 && (
+            <div>
+              <strong>Abilities:</strong>
+              <ul>
+                {card.abilities.map((ability, index) => (
+                  <li key={index}>
+                    {ability.name} - {ability.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {card.cardmarket &&
+            card.cardmarket.prices &&
+            card.cardmarket.prices.averageSellPrice && (
+              <p>
+                <strong>Price:</strong> $
+                {card.cardmarket.prices.averageSellPrice}
+              </p>
+            )}
           {card.types && (
             <p>
               <strong>Types:</strong> {card.types.join(", ")}
+            </p>
+          )}
+          {card.retreatCost && (
+            <p>
+              <strong>Retreat Cost:</strong> {card.retreatCost.join(", ")}
+            </p>
+          )}
+          {card.weaknesses && card.weaknesses.length > 0 && (
+            <p>
+              <strong>Weaknesses:</strong>{" "}
+              {card.weaknesses
+                .map((weakness) => `${weakness.type} ${weakness.value}`)
+                .join(", ")}
             </p>
           )}
           {card.attacks && card.attacks.length > 0 && (

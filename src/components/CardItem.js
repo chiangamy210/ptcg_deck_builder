@@ -43,7 +43,7 @@ const CardItem = ({
           <button
             className="card-remove-button"
             title="Remove from Deck"
-            onClick={() => window.alert(`Remove ${card.name} from deck`)}
+            onClick={() => console.log(card)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

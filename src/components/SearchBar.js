@@ -12,7 +12,6 @@ const SearchBar = ({ onSearch }) => {
       const response = await axios.get(
         `https://api.pokemontcg.io/v2/cards?q=name:${encodedSearchTerm}`
       );
-      console.log("API Response Data:", response.data.data);
       onSearch(searchTerm); // Pass searchTerm to onSearch
     } catch (error) {
       console.error("Error fetching cards:", error);

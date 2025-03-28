@@ -74,7 +74,6 @@ function App() {
   const clearSelectedCard = () => {
     setSelectedCard(null);
   };
-
   return (
     <div className="app-container">
       <header className="app-header">

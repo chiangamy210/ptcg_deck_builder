@@ -3,23 +3,23 @@ import CardItem from "./CardItem";
 import "./DeckTable.css";
 
 const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
-  // Group cards by type
+  // Group cards by supertype
   const groupedCards = deck.reduce((acc, card) => {
-    if (!acc[card.type]) {
-      acc[card.type] = [];
+    if (!acc[card.supertype]) {
+      acc[card.supertype] = [];
     }
 
     // Check if card already exists in the group
-    const existingCardIndex = acc[card.type].findIndex(
+    const existingCardIndex = acc[card.supertype].findIndex(
       (c) => c.card.id === card.id
     );
 
     if (existingCardIndex >= 0) {
       // Increment quantity if card already exists
-      acc[card.type][existingCardIndex].quantity += 1;
+      acc[card.supertype][existingCardIndex].quantity += 1;
     } else {
       // Add new card with quantity 1
-      acc[card.type].push({ card, quantity: 1 });
+      acc[card.supertype].push({ card, quantity: 1 });
     }
 
     return acc;
@@ -38,11 +38,11 @@ const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
         </div>
       ) : (
         <div className="deck-sections">
-          {Object.entries(groupedCards).map(([type, cards]) => (
-            <div key={type} className="deck-section">
+          {Object.entries(groupedCards).map(([category, cards]) => (
+            <div key={category} className="deck-section">
               <div className="section-header">
                 <h3>
-                  {type} (
+                  {category} (
                   {cards.reduce((sum, { quantity }) => sum + quantity, 0)})
                 </h3>
               </div>
