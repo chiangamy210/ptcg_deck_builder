@@ -1,14 +1,7 @@
 import React from "react";
 import "./CardItem.css";
 
-const CardItem = ({
-  card,
-  quantity = 1,
-  onAddToDeck,
-  onCardClick,
-  onCardHover,
-  onCardLeave,
-}) => {
+const CardItem = ({ card, onCardClick, onCardHover, onCardLeave }) => {
   return (
     <div
       className="card-item"
@@ -20,46 +13,17 @@ const CardItem = ({
       }}
       onMouseLeave={onCardLeave}
     >
-      <div className="card-quantity">{quantity}</div>
-      <div className="card-name">
-        <span>{card.name}</span>
-        {card.set.ptcgoCode && <span>({card.set.ptcgoCode})</span>}
-      </div>
-
-      <div className="card-actions">
-        {onAddToDeck ? (
-          <button
-            className="card-add-button"
-            title="Add to Deck"
-            onClick={() => onAddToDeck(card)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              width="16"
-              height="16"
-            >
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-            </svg>
-          </button>
-        ) : (
-          <button
-            className="card-remove-button"
-            title="Remove from Deck"
-            onClick={() => console.log(card)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              width="16"
-              height="16"
-            >
-              <path d="M19 13H5v-2h14v2z" />
-            </svg>
-          </button>
+      <div className="card-item-header">
+        <div className="card-name">{card.name}</div>
+        {card.set.ptcgoCode && (
+          <div className="card-set">({card.set.ptcgoCode})</div>
         )}
+      </div>
+      <img className="card-image" src={card.images.small} alt={card.name} />
+      <div className="card-item-footer">
+        <div className="card-price">
+          ${card.cardmarket.prices.averageSellPrice.toFixed(2)}
+        </div>
       </div>
     </div>
   );

@@ -37,7 +37,10 @@ const CardPage = ({ card, onClose, isHovered }) => {
         </button>
       ) : null}
 
-      <h2>{card.name}</h2>
+      <h2>
+        <span>{card.name}</span>
+        {card.set.ptcgoCode && <span>({card.set.ptcgoCode})</span>}
+      </h2>
       <div className="card-content">
         {card.images && card.images.large && (
           <img src={card.images.large} alt={card.name} className="card-image" />
