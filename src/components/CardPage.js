@@ -55,9 +55,9 @@ const CardPage = ({ card, onAddToDeck, onClose, isHovered }) => {
               <strong>HP:</strong> {card.hp}
             </p>
           )}
-          {card.rule && (
+          {card.rules && (
             <p>
-              <strong>Rule:</strong> {card.rule}
+              <strong>Rules:</strong> {card.rules}
             </p>
           )}
           {card.abilities && card.abilities.length > 0 && (
