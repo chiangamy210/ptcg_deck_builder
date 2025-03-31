@@ -52,18 +52,9 @@ body {
   overflow-y: auto; /* In case content overflows */
   height: auto; /* Adjust height as needed */
 }
-
-/* .column-search-results {
-  max-height: 600px;
-}
-
 .column-card-page {
-  width: 30vw;
+  flex: 2;
 }
-
-.column-deck-table {
-  max-height: 600px;
-} */
 
 .app-header {
   margin-bottom: 30px; /* More space below header */
@@ -95,14 +86,6 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   pointer-events: none;
 }
-
-/* .decktable-item-hover-card{
-
-}
-
-.searchresult-item-hover-card{
-  
-} */
 
 .hover-card-image {
   width: 120px;

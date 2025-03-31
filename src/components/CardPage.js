@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./CardPage.css";
 
-const CardPage = ({ card, onAddToDeck, onClose, isHovered }) => {
+const CardPage = ({ card, onClose, isHovered }) => {
   const cardPageRef = useRef(null);
 
   useEffect(() => {

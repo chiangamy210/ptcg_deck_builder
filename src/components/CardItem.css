@@ -28,7 +28,6 @@
   gap: 8px;
 }
 
-.card-info-button,
 .card-add-button,
 .card-remove-button {
   display: flex;
@@ -40,15 +39,6 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.card-info-button {
-  background-color: #e0e0e0;
-  color: #555;
-}
-
-.card-info-button:hover {
-  background-color: #d0d0d0;
 }
 
 .card-add-button {

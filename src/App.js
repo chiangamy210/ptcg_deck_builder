@@ -107,11 +107,7 @@ function App() {
 
           {selectedCard ? (
             <div className="column column-card-page">
-              <CardPage
-                card={selectedCard}
-                onAddToDeck={handleAddToDeck}
-                onClose={clearSelectedCard}
-              />
+              <CardPage card={selectedCard} onClose={clearSelectedCard} />
             </div>
           ) : null}
 

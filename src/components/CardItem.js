@@ -21,7 +21,11 @@ const CardItem = ({
       onMouseLeave={onCardLeave}
     >
       <div className="card-quantity">{quantity}</div>
-      <div className="card-name">{card.name}</div>
+      <div className="card-name">
+        <span>{card.name}</span>
+        {card.set.ptcgoCode && <span>({card.set.ptcgoCode})</span>}
+      </div>
+
       <div className="card-actions">
         {onAddToDeck ? (
           <button
