@@ -7,6 +7,7 @@ const CardItem = ({ card, onCardClick, onCardHover, onCardLeave }) => {
       className="card-item"
       onClick={() => onCardClick(card)}
       onMouseEnter={(e) => {
+        console.log(card);
         if (onCardHover) {
           onCardHover(card, e);
         }
@@ -22,7 +23,9 @@ const CardItem = ({ card, onCardClick, onCardHover, onCardLeave }) => {
       <img className="card-image" src={card.images.small} alt={card.name} />
       <div className="card-item-footer">
         <div className="card-price">
-          ${card.cardmarket.prices.averageSellPrice.toFixed(2)}
+          $
+          {card.cardmarket &&
+            card.cardmarket.prices.averageSellPrice.toFixed(2)}
         </div>
       </div>
     </div>
