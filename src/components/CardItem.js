@@ -6,23 +6,31 @@ const CardItem = ({ card, onCardClick, onAddToDeck }) => {
   const [showQuantity, setShowQuantity] = useState(false);
 
   const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+    setQuantity((prevQuantity) => {
+      const newQuantity = prevQuantity + 1;
+      onAddToDeck(card, newQuantity); // Now correctly using the updated quantity
+      return newQuantity;
+    });
   };
 
   const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    } else {
-      setShowQuantity(false);
-    }
+    setQuantity((prevQuantity) => {
+      if (prevQuantity > 1) {
+        const newQuantity = prevQuantity - 1;
+        onAddToDeck(card, newQuantity); // Now correctly using the updated quantity
+        return newQuantity;
+      } else {
+        setShowQuantity(false);
+        return 1; // Reset to 1
+      }
+    });
   };
 
-  const handleAddToDeckClick = (e) => {
+  const handleQuantityAndOnCardClicked = (e) => {
     e.stopPropagation();
-    if (showQuantity && quantity > 0) {
-      onAddToDeck(card, quantity);
-      setShowQuantity(false); // Hide quantity after adding to deck
-      setQuantity(1); // Reset quantity for next use
+    if (showQuantity) {
+      setQuantity(1);
+      onAddToDeck(card, 1); // Ensure we send 1
     } else {
       setShowQuantity(true);
     }
@@ -31,7 +39,6 @@ const CardItem = ({ card, onCardClick, onAddToDeck }) => {
   return (
     <div className="card-item" onClick={() => onCardClick(card)}>
       <div className="card-item-header">
-        <div className="card-name">{card.name}</div>
         {card.set && card.set.ptcgoCode && (
           <div className="card-set">({card.set.ptcgoCode})</div>
         )}
@@ -47,7 +54,7 @@ const CardItem = ({ card, onCardClick, onAddToDeck }) => {
           }`}
         >
           <button
-            onClick={handleAddToDeckClick}
+            onClick={handleQuantityAndOnCardClicked}
             className="add-icon-button"
             title="Add to deck"
           >

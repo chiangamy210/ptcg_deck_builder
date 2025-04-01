@@ -18,7 +18,9 @@ function App() {
   const [hoverPosition, setHoverPosition] = useState({ top: 0, left: 0 });
 
   const ptcgApiBaseUrl = "https://api.pokemontcg.io/v2";
-
+  useEffect(() => {
+    console.log("deck update", deck);
+  }, [deck]);
   // Function to fetch search results from PTCG API
   const searchCards = async (query) => {
     try {
@@ -49,8 +51,13 @@ function App() {
     }
   };
 
-  const handleAddToDeck = (card) => {
-    setDeck([...deck, card]);
+  const handleAddToDeck = (card, quantity) => {
+    console.log("handleAddToDeck called", card);
+    console.log("quantity", quantity);
+
+    const cardsToAdd = Array(quantity).fill(card); // Create an array with 'quantity' number of 'card' objects
+    setDeck([...deck, ...cardsToAdd]);
+    console.log("deck", deck);
     clearSelectedCard();
   };
 
@@ -90,7 +97,6 @@ function App() {
               clearSelectedCard={clearSelectedCard}
             />
           </div>
-
           {selectedCard ? (
             <div>
               <CardPage card={selectedCard} onClose={clearSelectedCard} />
