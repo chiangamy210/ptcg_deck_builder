@@ -1,18 +1,22 @@
 .card-page {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  display: block; /* Change to block display */
   border: 1px solid #ccc;
   border-radius: 5px;
   z-index: 1000;
-  position: relative;
-  overflow-y: auto;
-  margin-top: 0;
-  background-color: rgba(255, 255, 255, 1);
+  position: fixed; /* Change to fixed positioning to cover the whole viewport */
+  top: 0; /* Distance from the top */
+  left: 0; /* Distance from the left */
+  width: 100%; /* Occupy 90% of the viewport width */
+  height: 100%; /* Occupy 90% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* White with slight transparency */
   opacity: 1;
-  max-width: 900px; /* Limit card page width */
-  padding: 20px; /* Increased padding */
-  font-family: Arial, sans-serif;
-  font-size: 0.6em; /* Reduced font size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 .card-page h2 {
@@ -179,19 +183,18 @@
   opacity: 1;
 }
 .card-page {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block; /* Change to block display */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   z-index: 1000;
-  position: relative;
+  position: absolute; /* Change to absolute positioning */
+  top: 0;
+  left: 0;
   overflow-y: auto;
   margin-top: 0;
   background-color: rgba(255, 255, 255, 1);
   opacity: 1;
-  transition: transform 0.3s ease; /* Smooth transform on hover */
 }
 
 .card-page:hover .card-image {

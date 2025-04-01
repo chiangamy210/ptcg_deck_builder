@@ -9,11 +9,6 @@
   background-color: #fff;
 }
 
-.card-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 .card-item-header,
 .card-item-footer {
   padding: 8px;
@@ -49,4 +44,28 @@
 .card-price {
   font-size: 0.9rem;
   color: #555; /* Slightly darker price */
+  margin-right: auto; /* Push price to the left */
+}
+
+.card-item-footer {
+  border-top: 1px solid #eee; /* Separator between image and footer */
+  background-color: #f9f9f9; /* Light background for footer */
+  display: flex; /* Use flexbox for footer */
+  align-items: center; /* Vertically align items in footer */
+  justify-content: flex-end; /* Align button to the right */
+}
+
+.add-to-deck-button {
+  background-color: #5cb85c; /* Green button */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-deck-button:hover {
+  background-color: #4cae4c; /* Darker green on hover */
 }

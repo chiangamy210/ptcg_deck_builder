@@ -68,6 +68,7 @@ function App() {
   };
 
   const handleCardClick = (card) => {
+    console.log("card", card);
     setSelectedCard(card);
   };
 
@@ -89,21 +90,6 @@ function App() {
               clearSelectedCard={clearSelectedCard}
             />
           </div>
-          {hoveredCard ? (
-            <div
-              className="card-page-hover"
-              style={{
-                top: hoverPosition.top,
-                left: hoverPosition.left,
-              }}
-            >
-              <CardPage
-                card={hoveredCard}
-                isHovered={isHovered}
-                onClose={() => setHoveredCard(null)}
-              />
-            </div>
-          ) : null}
 
           {selectedCard ? (
             <div className="column column-card-page">
@@ -118,7 +104,6 @@ function App() {
                 onAddToDeck={handleAddToDeck}
                 onCardClick={handleCardClick}
                 clearSelectedCard={clearSelectedCard}
-                onCardHover={handleCardHover}
               />
             </div>
           ) : null}

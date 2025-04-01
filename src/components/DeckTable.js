@@ -1,11 +1,11 @@
 import React from "react";
 import CardItem from "./CardItem";
+import DeckTableCardItem from "./DeckTableCardItem";
 import "./DeckTable.css";
 
 const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
-  // Group cards by category and subtype
   const groupedCards = deck.reduce((acc, card) => {
-    let category = card.supertype.toLowerCase();
+    let category = card.supertype ? card.supertype.toLowerCase() : "unknown";
     let subCategory = null;
 
     if (category === "trainer") {
@@ -75,7 +75,7 @@ const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
                 </div>
                 <div className="section-cards">
                   {cards.map(({ card, quantity }) => (
-                    <CardItem
+                    <DeckTableCardItem
                       key={card.id}
                       card={card}
                       quantity={quantity}
