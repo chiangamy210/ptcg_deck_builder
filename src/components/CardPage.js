@@ -4,31 +4,6 @@ import "./CardPage.css";
 const CardPage = ({ card, onClose, isHovered }) => {
   const cardPageRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        isHovered &&
-        cardPageRef.current &&
-        !cardPageRef.current.contains(event.target)
-      ) {
-        onClose();
-      }
-    };
-
-    const timer = setTimeout(() => {
-      document.addEventListener("mousedown", handleClickOutside);
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClose]);
-
-  if (!card) {
-    return <div>Card not found</div>;
-  }
-
   return (
     <div className="card-page" ref={cardPageRef}>
       {!isHovered ? (
