@@ -1,17 +1,11 @@
 import React, { useState } from "react";
+import "./DeckTableCardItem.css";
 
-function DeckTableCardItem({ card, onCardClick }) {
+function DeckTableCardItem({ card, onCardClick, quantity }) {
   return (
-    <div
-      onClick={onCardClick}
-      style={{
-        border: "1px solid black",
-        padding: "5px",
-        margin: "5px",
-        cursor: "pointer",
-      }}
-    >
+    <div onClick={onCardClick} className="deck-table-card-item">
       <div className="card-item-header">
+        {quantity > 0 && <span className="card-quantity">{quantity}</span>}
         <span className="card-name">{card.name}</span>
         {card.set && card.set.ptcgoCode && (
           <span className="card-set">({card.set.ptcgoCode})</span>

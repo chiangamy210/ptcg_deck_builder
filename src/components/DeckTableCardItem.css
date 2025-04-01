@@ -1,0 +1,22 @@
+/* DeckTableCardItem.css */
+.deck-table-card-item {
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.card-item-header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.card-quantity {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.card-set {
+  font-style: italic;
+  margin-left: 5px;
+}
