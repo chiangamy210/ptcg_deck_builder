@@ -17,13 +17,10 @@ const CardItem = ({ card, onCardClick, onAddToDeck }) => {
           {card.cardmarket &&
             card.cardmarket.prices.averageSellPrice.toFixed(2)}
         </div>
-        <button
-          className="add-to-deck-button"
-          onClick={() => onAddToDeck(card)}
-        >
-          Add to Deck
-        </button>
       </div>
+      <button className="add-to-deck-button" onClick={() => onAddToDeck(card)}>
+        Add to Deck
+      </button>
     </div>
   );
 };

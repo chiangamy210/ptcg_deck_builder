@@ -92,7 +92,7 @@ function App() {
           </div>
 
           {selectedCard ? (
-            <div className="column column-card-page">
+            <div>
               <CardPage card={selectedCard} onClose={clearSelectedCard} />
             </div>
           ) : null}

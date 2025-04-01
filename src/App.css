@@ -52,9 +52,6 @@ body {
   overflow-y: auto; /* In case content overflows */
   height: auto; /* Adjust height as needed */
 }
-.column-card-page {
-  flex: 2;
-}
 
 .app-header {
   margin-bottom: 30px; /* More space below header */
