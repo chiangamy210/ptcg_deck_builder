@@ -51,16 +51,33 @@ function App() {
     }
   };
 
-  const handleAddToDeck = (card, quantity) => {
+  const handleAddToDeck = async (card, quantity) => {
     console.log("handleAddToDeck called", card);
     console.log("quantity", quantity);
 
-    const cardsToAdd = Array(quantity).fill(card); // Create an array with 'quantity' number of 'card' objects
-    setDeck([...deck, ...cardsToAdd]);
-    console.log("deck", deck);
+    try {
+      // 假設你的後端有一個 /api/decks/:deckId 路由來添加卡片
+      const deckId = "yourDeckId"; // 這裡使用你卡組的 ID
+      const response = await axios.post(
+        `http://localhost:5000/api/decks/${deckId}`,
+        {
+          cardId: card.id,
+          quantity: quantity,
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Deck updated:", response.data);
+        setDeck(response.data.cards); // 更新本地卡組狀態
+      } else {
+        console.error("Failed to add card to deck");
+      }
+    } catch (error) {
+      console.error("Error adding card to deck:", error);
+    }
+
     clearSelectedCard();
   };
-
   const handleCardHover = (card, event) => {
     clearTimeout(hoverTimer);
     hoverTimer = setTimeout(() => {

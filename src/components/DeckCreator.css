@@ -1,0 +1,42 @@
+.deck-creator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.deck-creator h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.deck-creator form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deck-creator input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.deck-creator button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deck-creator button[type="submit"]:hover {
+  background-color: #0056b3;
+}
