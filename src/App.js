@@ -57,8 +57,7 @@ function App() {
     console.log("quantity", quantity);
 
     try {
-      // 假設你的後端有一個 /api/decks/:deckId 路由來添加卡片
-      const deckId = "yourDeckId"; // 這裡使用你卡組的 ID
+      const deckId = "yourDeckId";
       const response = await axios.post(
         `http://localhost:5000/api/decks/${deckId}`,
         {
@@ -69,7 +68,7 @@ function App() {
 
       if (response.status === 200) {
         console.log("Deck updated:", response.data);
-        setDeck(response.data.cards); // 更新本地卡組狀態
+        setDeck(response.data.cards);
       } else {
         console.error("Failed to add card to deck");
       }
