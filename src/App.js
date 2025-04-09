@@ -11,6 +11,7 @@ let hoverTimer;
 
 function App() {
   const [deck, setDeck] = useState([]);
+  const [deckName, setDeckName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -50,7 +51,7 @@ function App() {
       setSearchResults([]);
     }
   };
-
+  const handleCreateDeck = async () => {};
   const handleAddToDeck = async (card, quantity) => {
     console.log("handleAddToDeck called", card);
     console.log("quantity", quantity);
