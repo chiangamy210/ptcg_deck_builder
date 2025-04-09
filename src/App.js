@@ -51,20 +51,29 @@ function App() {
       setSearchResults([]);
     }
   };
-  const handleCreateDeck = async () => {};
-  const handleAddToDeck = async (card, quantity) => {
-    console.log("handleAddToDeck called", card);
-    console.log("quantity", quantity);
-
+  const handleCreateDeck = async () => {
     try {
-      const deckId = "yourDeckId";
-      const response = await axios.post(
-        `http://localhost:5000/api/decks/${deckId}`,
-        {
-          cardId: card.id,
-          quantity: quantity,
-        }
-      );
+      const response = await axios.post("/api/create-deck", {
+        name: deckName || "New Deck",
+      });
+      const newDeck = response.data;
+      setDeck([]); // 新建時清空牌組
+      setDeckName(newDeck.name);
+      localStorage.setItem("deckId", newDeck.id); // 儲存 ID 以便後續使用
+      alert("Deck created successfully!");
+    } catch (error) {
+      console.error("Failed to create deck", error);
+    }
+  };
+
+  const handleAddToDeck = async (card, quantity) => {
+    try {
+      const deckId = localStorage.getItem("deckId");
+      const response = await axios.post(`/api/decks/${deckId}/addCard`, {
+        deckId,
+        cardId: card.id,
+        quantity: quantity,
+      });
 
       if (response.status === 200) {
         console.log("Deck updated:", response.data);
@@ -78,6 +87,7 @@ function App() {
 
     clearSelectedCard();
   };
+
   const handleCardHover = (card, event) => {
     clearTimeout(hoverTimer);
     hoverTimer = setTimeout(() => {
