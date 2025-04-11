@@ -3,21 +3,41 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Deck {
-  id        String       @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String
-  createdAt DateTime     @default(now())
-  cards     CardInDeck[]
+  cards     DeckCard[]
+  createdAt DateTime   @default(now())
 }
 
-model CardInDeck {
+model Card {
+  id           String   @id               // e.g. "swsh3-20"
+  name         String
+  supertype    String
+  subtypes     String[]
+  hp           String?
+  rules        String[]
+  abilities    Json?
+  types        String[]
+  retreatCost  String[]
+  weaknesses   Json?
+  attacks      Json?
+  imageUrl     String
+  ptcgoCode    String?
+  price        Float?
+  createdAt    DateTime @default(now())
+  deckCards    DeckCard[]
+}
+
+model DeckCard {
   id        String   @id @default(cuid())
   deck      Deck     @relation(fields: [deckId], references: [id])
   deckId    String
+  card      Card     @relation(fields: [cardId], references: [id])
   cardId    String
   quantity  Int
 }
