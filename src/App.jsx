@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     console.log("deck update", deck);
   }, [deck]);
-  // Function to fetch search results from PTCG API
+
   const searchCards = async (query) => {
     try {
       const response = await axios.get(`${ptcgApiBaseUrl}/cards`, {
@@ -51,15 +51,18 @@ function App() {
       setSearchResults([]);
     }
   };
-  const handleCreateDeck = async () => {
+  console.log("deckName", deckName);
+
+  const handleCreateDeck = async (deckName) => {
     try {
-      const response = await axios.post("/api/create-deck", {
-        name: deckName || "New Deck",
+      const response = await axios.post("/api/createDeck", {
+        name: deckName || "New DDDeck",
       });
+      console.log("response", response);
       const newDeck = response.data;
-      setDeck([]); // 新建時清空牌組
+      setDeck([]);
       setDeckName(newDeck.name);
-      localStorage.setItem("deckId", newDeck.id); // 儲存 ID 以便後續使用
+      localStorage.setItem("deckId", newDeck.id);
       alert("Deck created successfully!");
     } catch (error) {
       console.error("Failed to create deck", error);
@@ -122,6 +125,7 @@ function App() {
               deck={deck}
               onCardClick={handleCardClick}
               clearSelectedCard={clearSelectedCard}
+              onCreateDeck={handleCreateDeck}
             />
           </div>
           {selectedCard ? (

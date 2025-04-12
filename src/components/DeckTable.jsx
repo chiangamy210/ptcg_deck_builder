@@ -4,13 +4,13 @@ import DeckTableCardItem from "./DeckTableCardItem";
 import DeckCreator from "./DeckCreator";
 import "./DeckTable.css";
 
-const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
+const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
   const [isCreatorVisible, setIsCreatorVisible] = useState(false);
 
-  const handleCreateDeck = (deckName) => {
-    console.log("Deck created:", deckName);
-    setIsCreatorVisible(false);
-  };
+  // const handleCreateDeck = (deckName) => {
+  //   console.log("Deck created:", deckName);
+  //   setIsCreatorVisible(false);
+  // };
 
   const groupedCards = deck.reduce((acc, card) => {
     let category = card.supertype ? card.supertype.toLowerCase() : "unknown";
@@ -63,7 +63,13 @@ const DeckTable = ({ deck, onCardLeave, onCardClick }) => {
         <div className="deck-stats">Total Cards: {deck.length}</div>
       </div>
 
-      {isCreatorVisible && <DeckCreator onCreateDeck={handleCreateDeck} />}
+      {isCreatorVisible && (
+        <DeckCreator
+          onCreateDeck={(deckName) => {
+            onCreateDeck(deckName);
+          }}
+        />
+      )}
 
       {Object.keys(groupedCards).length === 0 ? (
         <div className="empty-deck-message">

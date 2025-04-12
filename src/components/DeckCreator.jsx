@@ -8,6 +8,7 @@ const DeckCreator = ({ onCreateDeck }) => {
     event.preventDefault();
     if (deckName.trim()) {
       onCreateDeck(deckName);
+      console.log(deckName);
       setDeckName("");
     }
   };
