@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CardItem from "./CardItem";
 import DeckTableCardItem from "./DeckTableCardItem";
 import DeckCreator from "./DeckCreator";
-import "./DeckTable.css";
+import "../styles/DeckTable.css";
 
 const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
   const [isCreatorVisible, setIsCreatorVisible] = useState(false);

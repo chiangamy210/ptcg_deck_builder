@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./DeckCreator.css";
+import "../styles/DeckCreator.css";
 
 const DeckCreator = ({ onCreateDeck }) => {
   const [deckName, setDeckName] = useState("");
@@ -8,7 +8,6 @@ const DeckCreator = ({ onCreateDeck }) => {
     event.preventDefault();
     if (deckName.trim()) {
       onCreateDeck(deckName);
-      console.log(deckName);
       setDeckName("");
     }
   };

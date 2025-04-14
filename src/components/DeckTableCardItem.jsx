@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./DeckTableCardItem.css";
+import "../styles/DeckTableCardItem.css";
 
 function DeckTableCardItem({ card, onCardClick, quantity }) {
   return (

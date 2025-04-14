@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import DeckTable from "./DeckTable";
 import SearchResults from "./SearchResults";
 import CardPage from "./CardPage";
-import "./deckPage.css";
+import "../styles/deckPage.css";
 import axios from "axios";
 // import cardData from "./data/cards"; // Removing cardData import
 
@@ -19,9 +19,7 @@ function DeckPage() {
   const [hoverPosition, setHoverPosition] = useState({ top: 0, left: 0 });
 
   const ptcgApiBaseUrl = "https://api.pokemontcg.io/v2";
-  useEffect(() => {
-    console.log("deck update", deck);
-  }, [deck]);
+  useEffect(() => {}, [deck]);
 
   const searchCards = async (query) => {
     try {

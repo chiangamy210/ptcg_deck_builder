@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CardItem.css";
+import "../styles/CardItem.css";
 
 const CardItem = ({ card, onCardClick, onAddToDeck }) => {
   const [quantity, setQuantity] = useState(1);

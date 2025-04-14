@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./CardPage.css";
+import "../styles/CardPage.css";
 
 const CardPage = ({ card, onClose, isHovered }) => {
   const cardPageRef = useRef(null);

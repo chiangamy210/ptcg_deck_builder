@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CardItem from "./CardItem";
-import "./SearchResults.css";
+import "../styles/SearchResults.css";
 
 const SearchResults = ({
   onAddToDeck,
