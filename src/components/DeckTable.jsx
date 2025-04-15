@@ -5,7 +5,7 @@ import DeckCreator from "./DeckCreator";
 import "../styles/DeckTable.css";
 
 const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
-  const [isCreatorVisible, setIsCreatorVisible] = useState(false);
+  // const [isCreatorVisible, setIsCreatorVisible] = useState(false);
 
   // const handleCreateDeck = (deckName) => {
   //   console.log("Deck created:", deckName);
@@ -54,22 +54,22 @@ const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
     <div className="deck-table">
       <div className="deck-header">
         <h2>My Deck</h2>
-        <button
+        {/* <button
           className="new-deck-button"
           onClick={() => setIsCreatorVisible(true)}
         >
           +
-        </button>
+        </button> */}
         <div className="deck-stats">Total Cards: {deck.length}</div>
       </div>
 
-      {isCreatorVisible && (
+      {/* {isCreatorVisible && (
         <DeckCreator
           onCreateDeck={(deckName) => {
             onCreateDeck(deckName);
           }}
         />
-      )}
+      )} */}
 
       {Object.keys(groupedCards).length === 0 ? (
         <div className="empty-deck-message">

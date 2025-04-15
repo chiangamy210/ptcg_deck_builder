@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import "../styles/DeckCreator.css";
 
-const DeckCreator = ({ onCreateDeck }) => {
+const DeckCreator = ({ onSubmit }) => {
   const [deckName, setDeckName] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (deckName.trim()) {
-      onCreateDeck(deckName);
-      setDeckName("");
-    }
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (deckName.trim()) {
+  //     onCreateDeck(deckName);
+  //     setDeckName("");
+  //   }
+  // };
 
   return (
     <div className="deck-creator">
       <h3>Create New Deck</h3>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSubmit(deckName);
+        }}
+      >
         <input
           type="text"
           placeholder="Enter deck name"

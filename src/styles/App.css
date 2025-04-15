@@ -1,1 +1,92 @@
 /* CSS styles for App component */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f9;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: #6a1b9a;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column; /* Change to row for side-by-side columns */
+  align-items: center; /* Align columns to the start */
+  padding: 20px;
+  flex: 1;
+  width: 100%; /* Ensure main takes full width */
+  max-width: 1200px; /* Optional: set a max width for the main content */
+  margin: 0 auto; /* Center the main content */
+}
+
+.app-columns {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow-y: auto; /* In case content overflows */
+  height: auto; /* Adjust height as needed */
+}
+
+.app-header {
+  margin-bottom: 30px; /* More space below header */
+}
+
+.app-header h1 {
+  font-size: 2.5rem; /* Slightly larger header font */
+}
+
+.app-footer {
+  margin-top: 30px; /* More space above footer */
+  padding: 15px 0; /* Adjust footer padding */
+}
+
+.app-footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+.card-page-hover {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.hover-card-image {
+  width: 120px;
+  height: auto;
+  display: block;
+}

@@ -11,7 +11,6 @@ let hoverTimer;
 
 function DeckPage() {
   const [deck, setDeck] = useState([]);
-  const [deckName, setDeckName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -50,20 +49,20 @@ function DeckPage() {
     }
   };
 
-  const handleCreateDeck = async (deckName) => {
-    try {
-      const response = await axios.post("/api/createDeck", {
-        name: deckName || "New DDDeck",
-      });
-      const newDeck = response.data;
-      setDeck([]);
-      setDeckName(newDeck.name);
-      localStorage.setItem("deckId", newDeck.id);
-      alert("Deck created successfully!");
-    } catch (error) {
-      console.error("Failed to create deck", error);
-    }
-  };
+  // const handleCreateDeck = async (deckName) => {
+  //   try {
+  //     const response = await axios.post("/api/createDeck", {
+  //       name: deckName || "New DDDeck",
+  //     });
+  //     const newDeck = response.data;
+  //     setDeck([]);
+  //     setDeckName(newDeck.name);
+  //     localStorage.setItem("deckId", newDeck.id);
+  //     alert("Deck created successfully!");
+  //   } catch (error) {
+  //     console.error("Failed to create deck", error);
+  //   }
+  // };
 
   const handleAddToDeck = async (card, quantity) => {
     try {
@@ -75,7 +74,6 @@ function DeckPage() {
       });
 
       if (response.status === 200) {
-        console.log("Deck updated:", response.data);
         setDeck(response.data.cards);
       } else {
         console.error("Failed to add card to deck");
@@ -110,18 +108,15 @@ function DeckPage() {
   };
   return (
     <div className="deckPage-container">
-      <header className="deckPage-header">
-        <h1>PTCG Deck Builder</h1>
-      </header>
       <main className="deckPage-main">
         <SearchBar onSearch={handleSearch} />
         <div className="deckPage-columns">
-          <div className="column column-deck-table">
+          <div className="column ">
             <DeckTable
               deck={deck}
               onCardClick={handleCardClick}
               clearSelectedCard={clearSelectedCard}
-              onCreateDeck={handleCreateDeck}
+              // onCreateDeck={handleCreateDeck}
             />
           </div>
           {selectedCard ? (
@@ -142,9 +137,6 @@ function DeckPage() {
           ) : null}
         </div>
       </main>
-      <footer className="deckPage-footer">
-        <p>&copy; 2025 PTCG Deck Builder</p>
-      </footer>
     </div>
   );
 }
