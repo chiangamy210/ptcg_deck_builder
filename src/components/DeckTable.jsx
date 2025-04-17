@@ -54,22 +54,9 @@ const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
     <div className="deck-table">
       <div className="deck-header">
         <h2>My Deck</h2>
-        {/* <button
-          className="new-deck-button"
-          onClick={() => setIsCreatorVisible(true)}
-        >
-          +
-        </button> */}
+
         <div className="deck-stats">Total Cards: {deck.length}</div>
       </div>
-
-      {/* {isCreatorVisible && (
-        <DeckCreator
-          onCreateDeck={(deckName) => {
-            onCreateDeck(deckName);
-          }}
-        />
-      )} */}
 
       {Object.keys(groupedCards).length === 0 ? (
         <div className="empty-deck-message">

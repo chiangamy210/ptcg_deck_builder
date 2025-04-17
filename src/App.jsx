@@ -1,26 +1,30 @@
-import Decks from "./components/Decks";
+import DecksIndex from "./components/DecksIndex";
 import DeckPage from "./components/DeckPage";
 import "./styles/App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function App() {
   const [deckName, setDeckName] = useState("");
+  const [decks, setDecks] = useState([]);
 
   const handleCreateDeck = async (deckName) => {
     try {
       const response = await axios.post("/api/createDeck", {
         name: deckName || "New Deck",
+        withCredentials: false,
       });
       const newDeck = response.data;
-      // setDeck([]);
+      setDecks([...decks, newDeck]);
       setDeckName(newDeck.name);
       localStorage.setItem("deckId", newDeck.id);
       alert("Deck created successfully!");
+      console.log(decks);
     } catch (error) {
       console.error("Failed to create deck", error);
     }
   };
+
   return (
     <div>
       <header className="app-header">
@@ -28,7 +32,7 @@ export default function App() {
       </header>
       <div className="column column-deck-table">
         {" "}
-        <Decks onCreateDeck={handleCreateDeck} />
+        <DecksIndex decks={decks} onCreateDeck={handleCreateDeck} />
       </div>
 
       <div>

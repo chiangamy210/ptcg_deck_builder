@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DeckCreator from "./DeckCreator";
 import "../styles/DeckTable.css";
 
-const Decks = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
+const DecksIndex = ({ decks, onCardLeave, onCardClick, onCreateDeck }) => {
   const [isCreatorVisible, setIsCreatorVisible] = useState(false);
   const handleSubmit = (deckName) => {
     if (deckName) {
@@ -29,13 +29,20 @@ const Decks = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
           onSubmit={(deckName) => {
             handleSubmit(deckName);
           }}
-          onCreateDeck={(deckName) => {
-            onCreateDeck(deckName);
-          }}
+          // onCreateDeck={(deckName) => {
+          //   onCreateDeck(deckName);
+          // }}
         />
       )}
+      {decks.length > 0
+        ? decks.map((deck) => (
+            <div key={deck.id} className="deck-item">
+              {deck.name}
+            </div>
+          ))
+        : null}
     </div>
   );
 };
 
-export default Decks;
+export default DecksIndex;

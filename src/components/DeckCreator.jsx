@@ -4,14 +4,6 @@ import "../styles/DeckCreator.css";
 const DeckCreator = ({ onSubmit }) => {
   const [deckName, setDeckName] = useState("");
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (deckName.trim()) {
-  //     onCreateDeck(deckName);
-  //     setDeckName("");
-  //   }
-  // };
-
   return (
     <div className="deck-creator">
       <h3>Create New Deck</h3>
