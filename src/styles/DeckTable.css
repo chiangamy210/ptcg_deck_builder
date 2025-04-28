@@ -76,3 +76,16 @@
 .section-cards {
   padding: 10px;
 }
+
+.deck-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.deck-item:hover {
+  background-color: #f0f0f0;
+}

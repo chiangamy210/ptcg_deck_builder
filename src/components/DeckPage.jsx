@@ -1,24 +1,45 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import DeckTable from "./DeckTable";
 import SearchResults from "./SearchResults";
 import CardPage from "./CardPage";
 import "../styles/deckPage.css";
 import axios from "axios";
-// import cardData from "./data/cards"; // Removing cardData import
 
 let hoverTimer;
 
 function DeckPage() {
+  const { deckId } = useParams();
   const [deck, setDeck] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [message, setMessage] = useState("");
   const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const [hoverPosition, setHoverPosition] = useState({ top: 0, left: 0 });
 
   const ptcgApiBaseUrl = "https://api.pokemontcg.io/v2";
-  useEffect(() => {}, [deck]);
+
+  useEffect(() => {
+    const fetchDeck = async () => {
+      try {
+        const response = await axios.get(`/api/decks/${deckId}`);
+        if (response.status === 200) {
+          setDeck(response.data);
+        } else if (response.status === 404) {
+          setMessage("Deck not found");
+        } else {
+          setMessage("Failed to fetch deck");
+        }
+      } catch (error) {
+        console.error("Failed to fetch deck", error);
+        setMessage("Failed to fetch deck");
+      }
+    };
+
+    fetchDeck();
+  }, [deckId]);
 
   const searchCards = async (query) => {
     try {
@@ -48,21 +69,6 @@ function DeckPage() {
       setSearchResults([]);
     }
   };
-
-  // const handleCreateDeck = async (deckName) => {
-  //   try {
-  //     const response = await axios.post("/api/createDeck", {
-  //       name: deckName || "New DDDeck",
-  //     });
-  //     const newDeck = response.data;
-  //     setDeck([]);
-  //     setDeckName(newDeck.name);
-  //     localStorage.setItem("deckId", newDeck.id);
-  //     alert("Deck created successfully!");
-  //   } catch (error) {
-  //     console.error("Failed to create deck", error);
-  //   }
-  // };
 
   const handleAddToDeck = async (card, quantity) => {
     try {
@@ -118,6 +124,7 @@ function DeckPage() {
               clearSelectedCard={clearSelectedCard}
               // onCreateDeck={handleCreateDeck}
             />
+            {message && <p>{message}</p>}
           </div>
           {selectedCard ? (
             <div>

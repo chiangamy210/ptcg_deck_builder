@@ -12,48 +12,52 @@ const DeckTable = ({ deck, onCardLeave, onCardClick, onCreateDeck }) => {
   //   setIsCreatorVisible(false);
   // };
 
-  const groupedCards = deck.reduce((acc, card) => {
-    let category = card.supertype ? card.supertype.toLowerCase() : "unknown";
-    let subCategory = null;
+  const groupCards = (cards) => {
+    return cards.reduce((acc, card) => {
+      let category = card.supertype ? card.supertype.toLowerCase() : "unknown";
+      let subCategory = null;
 
-    if (category === "trainer") {
-      if (card.subtypes && card.subtypes.includes("Stadium")) {
-        subCategory = "Stadium";
-      } else if (card.subtypes && card.subtypes.includes("Item")) {
-        subCategory = "Item";
-      } else if (card.subtypes && card.subtypes.includes("Pokémon Tool")) {
-        subCategory = "Pokémon Tool";
-      } else {
-        subCategory = "Supporter"; // Default subtype for trainers
+      if (category === "trainer") {
+        if (card.subtypes && card.subtypes.includes("Stadium")) {
+          subCategory = "Stadium";
+        } else if (card.subtypes && card.subtypes.includes("Item")) {
+          subCategory = "Item";
+        } else if (card.subtypes && card.subtypes.includes("Pokémon Tool")) {
+          subCategory = "Pokémon Tool";
+        } else {
+          subCategory = "Supporter"; // Default subtype for trainers
+        }
       }
-    }
 
-    const groupKey = category + (subCategory ? `-${subCategory}` : "");
+      const groupKey = category + (subCategory ? `-${subCategory}` : "");
 
-    if (!acc[groupKey]) {
-      acc[groupKey] = [];
-    }
+      if (!acc[groupKey]) {
+        acc[groupKey] = [];
+      }
 
-    // Check if card already exists in the group
-    const existingCardIndex = acc[groupKey].findIndex(
-      (c) => c.card.id === card.id
-    );
+      // Check if card already exists in the group
+      const existingCardIndex = acc[groupKey].findIndex(
+        (c) => c.card.id === card.id
+      );
 
-    if (existingCardIndex >= 0) {
-      // Increment quantity if card already exists
-      acc[groupKey][existingCardIndex].quantity += 1;
-    } else {
-      // Add new card with quantity 1
-      acc[groupKey].push({ card, quantity: 1 });
-    }
+      if (existingCardIndex >= 0) {
+        // Increment quantity if card already exists
+        acc[groupKey][existingCardIndex].quantity += 1;
+      } else {
+        // Add new card with quantity 1
+        acc[groupKey].push({ card, quantity: 1 });
+      }
 
-    return acc;
-  }, {});
+      return acc;
+    }, {});
+  };
+
+  const groupedCards = deck && deck.cards ? groupCards(deck.cards) : {};
 
   return (
     <div className="deck-table">
       <div className="deck-header">
-        <h2>My Deck</h2>
+        <h2>{deck.name}</h2>
 
         <div className="deck-stats">Total Cards: {deck.length}</div>
       </div>
