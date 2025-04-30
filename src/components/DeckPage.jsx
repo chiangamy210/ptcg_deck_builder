@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import DeckTable from "./DeckTable";
 import SearchResults from "./SearchResults";
 import CardPage from "./CardPage";
-import "../styles/deckPage.css";
+import "../styles/DeckPage.css";
 import axios from "axios";
 
 let hoverTimer;
